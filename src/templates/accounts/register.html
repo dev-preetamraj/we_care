@@ -335,13 +335,23 @@
 				<!-- {% render_field form.username type="text" id="name" class="fadeIn second" name="name"
 				placeholder="Username" required %} -->
 				{% render_field form.username placeholder="username" %}
+				{% render_field form.first_name placeholder="First Name" %}
+				{% render_field form.last_name placeholder="Last Name" %}
 				{% render_field form.email placeholder="email" %}
 				{% render_field form.password1 placeholder="Password" %}
-				{% render_field form.password2 placeholder="Confirm Password" %}
+
+				{% render_field form.password2 placeholder="Confirm Password" %} <br>
+				<p>Are you a doctor</p>
+				{% render_field form.is_doctor name='roles' %} <br> <br>
 				<!-- <input type="text" id="name" class="fadeIn second" name="name" placeholder="Username" required> -->
 				<!-- <input type="email" id="login" class="fadeIn second" name="email" placeholder="Email" required>
 				<input type="email" id="login" class="fadeIn second" name="email" placeholder="Confirm Email" required>
 				<input type="password" id="password" class="fadeIn third" name="login" placeholder="Password"> -->
+				<!-- <label for="role">Choose your role:</label> -->
+				<!-- <select id="roles" name="roles">
+					<option value="doctor">doctor</option>
+					<option value="commonUser">commonUser</option>
+				</select> -->
 				<input type="submit" class="fadeIn fourth" value="Register" required>
 				{% render_field form.errors %}
 			</form>

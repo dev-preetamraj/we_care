@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,18 +8,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: rgb(26, 29, 29);
-            color: #fff;
+        .profile-pic {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
         }
     </style>
-    <title>Profile: Common</title>
+    <title>Profile</title>
 </head>
 
 <body>
-    {% include 'main/header.html' %}
-    <h1>Welcome {{request.user.username}}</h1>
-    {% include 'main/scripts.html' %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-body">
+                <a href="{% url 'home' %}" class="btn btn-warning">&#8592; Back to Home</a>
+                <hr>
+                <h3 style="text-align: center">Profile</h3>
+                <hr>
+                <img src="{{request.user.profile.profile_pic.url}}" class="profile-pic" alt="profile">
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" class="btn btn-primary" name="Update">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -5,9 +5,11 @@ from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import Group
 
-
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UpdateProfileForm, UserUpdateForm
+from .models import Profile
 
 # Create your views here.
 
@@ -31,11 +33,19 @@ def login_view(request):
 @unauthenticated_user
 def register_view(request):
     form = UserRegisterForm()
+    # role_form = RoleRegister()
 
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user_save = form.save()
+            if form.cleaned_data.get('is_doctor') == 'YES':
+                set_group = Group.objects.get(name='doctor')
+                user_save.groups.add(set_group)
+            else:
+                set_group = Group.objects.get(name='commonUser')
+                user_save.groups.add(set_group)
+
             return redirect('login')
     context = {
         'form': form,
@@ -46,3 +56,23 @@ def register_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+@login_required
+def ProfileView(request):
+    profile = request.user.profile
+    form = UpdateProfileForm(instance=profile)
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'profile/profile.html', context)
+
+
+@login_required
+def ProfileUpdateView(request):
+    return render(request, 'profile/test.html', {})

@@ -4,9 +4,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            background-color: #f8f9fa;
+        }
+
         body {
-            background-color: rgb(26, 29, 29);
-            color: #fff;
+            font-family: "Poppins", sans-serif;
+            height: 97vh;
+        }
+
+        /* Float four columns side by side */
+        .column {
+            /* float: left;*/
+            width: 60%;
+            padding: 0 10px;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-bottom: 20px;
+        }
+
+        /* Remove extra left and right margins, due to padding */
+        .row {
+            margin: 0 -5px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 10px;
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+        }
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #fff;
+            margin: 10px;
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+            box-shadow: 0px 50px 60px rgb(115 128 157 / 10%);
+        }
+
+        .card:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .new_clm {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+            text-align: left;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .new_clm img {
+            width: 100%;
+            height: 100%;
+
+            border-radius: 50%;
+        }
+
+        h5,
+        h6,
+        b {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 900;
+            color: #3e4555;
+            font-size: 1vw;
+            margin: 0px;
+        }
+
+        p {
+            font-family: "Montserrat", sans-serif;
+            color: #8d97ad;
+            font-weight: 300;
+            margin: 5px;
+            font-size: 1vw;
+        }
+
+        @media screen and (max-width: 600px) {
+            .new_clm {
+                height: 100%;
+            }
+
+            .card {
+                height: 160px;
+            }
         }
     </style>
     <title>WeCare</title>

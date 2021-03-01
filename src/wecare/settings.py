@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'wecareapp',
-    'widget_tweaks'
+    'widget_tweaks',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# AUTH_USER_MODEL = 'accounts.RoleModel'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

@@ -5,7 +5,35 @@
 <body>
     {% include 'main/header.html' %}
     <section class="main-body">
-        <h1>Welcome to WeCare</h1>
+        <h1>Welcome to WeCare, {{user}}</h1>
+        {% for users in queryset %}
+        <div class="column">
+            <div class="card">
+                <div class="new_clm">
+                    <img src="{{users.profile_pic.url}}">
+                </div>
+                <div class="new_clm">
+                    <p><b>Id: </b></p>
+                    <p>{{users.id}}</p>
+                    <p><b>Name: </b></p>
+                    <p>{{users.first_name}} {{users.last_name}}</p>
+
+                    <p><b>Specialization: </b></p>
+                    <p>{{users.specialization}}</p>
+                    <p><b>Availability: </b></p>
+                    <p>Available</p>
+                    <p><b>Clinic Address: </b></p>
+                    <p>{{users.homeaddress}}, {{users.country}}</p>
+                </div>
+                <div class="new_clm">
+                    <p><b>Discription</b></p>
+                    <p>You can relay on our amazing features list and also our customer services.</p>
+                    <p>You can relay on our amazing features list and also our customer services.</p>
+                    <p>You can relay on our amazing features list and also our customer services.</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </section>
     {% include 'main/footer.html' %}
     {% include 'main/scripts.html' %}
