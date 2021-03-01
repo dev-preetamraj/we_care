@@ -35,12 +35,19 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search </button>
             </form> -->
+
+            {% if user.is_authenticated %}
             <div class="d-flex">
                 <span class="btn">Hello, {{request.user.username}}</span>
                 <button class="btn"><a href="{% url 'logout' %}">Logout</a></button>
             </div>
+            {% else %}
+            <div class="d-flex">
+                <button class="btn"><a href="{% url 'login' %}">Login/Register</a></button>
+            </div>
+            {% endif %}
+
         </div>
-    </div>
 </nav>
 
 <style>

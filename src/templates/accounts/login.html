@@ -25,6 +25,7 @@
 			display: inline-block;
 			text-decoration: none;
 			font-weight: 400;
+			cursor: pointer;
 		}
 
 		h2 {
@@ -333,7 +334,8 @@
 					required>
 				<input type="submit" class="fadeIn fourth" value="Log In">
 			</form>
-
+			<p style="display: inline-block; margin:0px;">Don't have an account? &nbsp;</p><a
+				href="{% url 'register' %}" class="underlineHover">Sign Up</a>
 			<!-- form_footer -->
 			<div id="formFooter">
 				{% for message in messages %}
