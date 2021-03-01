@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(26, 29, 29);
+            color: #fff;
+        }
+    </style>
     <title>Profile: Common</title>
 </head>
 
 <body>
-    {% if group == 'doctor' %}
-    <h1>Welcome Dr. {{request.user.username}}</h1>
-    {% elif %}
+    {% include 'main/header.html' %}
     <h1>Welcome {{request.user.username}}</h1>
-    {% endif %}
+    {% include 'main/scripts.html' %}
 </body>
 
 </html>
